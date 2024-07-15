@@ -3,8 +3,8 @@
 #include <string>
 using namespace std;
 
-const int TABLE_SIZE = 61; // ËØÊı£¬×÷ÎªÉ¢ÁĞ±í´óĞ¡
-const int MAX_RECORDS = 30; // ×î´ó¼ÇÂ¼Êı
+const int TABLE_SIZE = 61; // ç´ æ•°ï¼Œä½œä¸ºæ•£åˆ—è¡¨å¤§å°
+const int MAX_RECORDS = 30; // æœ€å¤§è®°å½•æ•°
 
 struct Record {
     string name;
@@ -82,12 +82,12 @@ void HashTable::display() const {
 }
 
 void showMenu() {
-    cout << "¹¦ÄÜÑ¡Ïî£º" << endl;
-    cout << "1: ´´½¨ÁªÏµÈË" << endl;
-    cout << "2: ËÑË÷ÁªÏµÈË" << endl;
-    cout << "3: ÏÔÊ¾ËùÓĞÁªÏµÈË" << endl;
-    cout << "4: ÍË³ö" << endl;
-    cout << "ÇëÊäÈëÑ¡Ôñ: ";
+    cout << "åŠŸèƒ½é€‰é¡¹ï¼š" << endl;
+    cout << "1: åˆ›å»ºè”ç³»äºº" << endl;
+    cout << "2: æœç´¢è”ç³»äºº" << endl;
+    cout << "3: æ˜¾ç¤ºæ‰€æœ‰è”ç³»äºº" << endl;
+    cout << "4: é€€å‡º" << endl;
+    cout << "è¯·è¾“å…¥é€‰æ‹©: ";
 }
 
 int main() {
@@ -97,24 +97,24 @@ int main() {
     do {
         showMenu();
         cin >> choice;
-        cin.ignore(); // Çå³ı»»ĞĞ·û£¬±ÜÃâÓ°ÏìºóĞøÊäÈë
+        cin.ignore(); // æ¸…é™¤æ¢è¡Œç¬¦ï¼Œé¿å…å½±å“åç»­è¾“å…¥
 
         switch (choice) {
         case 1: {
             string name, phone, address;
             char cont = 'y';
             while (cont == 'y' || cont == 'Y') {
-                cout << "ÊäÈëÁªÏµÈËĞÕÃû: ";
+                cout << "è¾“å…¥è”ç³»äººå§“å: ";
                 getline(cin, name);
-                cout << "µç»°ºÅÂë: ";
+                cout << "ç”µè¯å·ç : ";
                 getline(cin, phone);
-                cout << "µØÖ·: ";
+                cout << "åœ°å€: ";
                 getline(cin, address);
                 hashTable.insert(name, phone, address);
 
-                cout << "Òª¼ÌĞøÂğ? (y/n): ";
+                cout << "è¦ç»§ç»­å—? (y/n): ";
                 cin >> cont;
-                cin.ignore(); // Çå³ı»»ĞĞ·û
+                cin.ignore(); // æ¸…é™¤æ¢è¡Œç¬¦
             }
             break;
         }
@@ -122,18 +122,18 @@ int main() {
             string searchName, searchPhone, searchAddress;
             char cont = 'y';
             while (cont == 'y' || cont == 'Y') {
-                cout << "ÊäÈëÒªËÑË÷µÄÁªÏµÈËĞÕÃû: ";
+                cout << "è¾“å…¥è¦æœç´¢çš„è”ç³»äººå§“å: ";
                 getline(cin, searchName);
                 if (hashTable.search(searchName, searchPhone, searchAddress)) {
-                    cout << "Found! µç»°ºÅÂë£º: " << searchPhone << ", µØÖ·: " << searchAddress << endl;
+                    cout << "Found! ç”µè¯å·ç ï¼š: " << searchPhone << ", åœ°å€: " << searchAddress << endl;
                 }
                 else {
-                    cout << "Ã»ÓĞ¸ÃÁªÏµÈË!" << endl;
+                    cout << "æ²¡æœ‰è¯¥è”ç³»äºº!" << endl;
                 }
 
-                cout << "Òª¼ÌĞøÂğ? (y/n): ";
+                cout << "è¦ç»§ç»­å—? (y/n): ";
                 cin >> cont;
-                cin.ignore(); // Çå³ı»»ĞĞ·û
+                cin.ignore(); // æ¸…é™¤æ¢è¡Œç¬¦
             }
             break;
         }
@@ -141,10 +141,10 @@ int main() {
             hashTable.display();
             break;
         case 4:
-            cout << "³É¹¦ÍË³ö" << endl;
+            cout << "æˆåŠŸé€€å‡º" << endl;
             break;
         default:
-            cout << "ÎŞĞ§ÊäÈë£¬ÇëÖØĞÂÑ¡Ôñ£º" << endl;
+            cout << "æ— æ•ˆè¾“å…¥ï¼Œè¯·é‡æ–°é€‰æ‹©ï¼š" << endl;
         }
     } while (choice != 4);
 
